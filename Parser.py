@@ -52,18 +52,12 @@ class Parser:
         with open(language_file) as f:
             for line in f:
                 line = line.strip()
-                match = re.search(ur'\[T_WORD:(?P<word>\w+) *(?P<synonim>\w+)?:(?P<translation>\w+)\]$', line)
+                match = re.search(ur'\[T_WORD:(?P<word>[\w -]+):(?P<translation>\w+)\]$', line)
                 if match:
                     wrd = match.group('word')
-                    synonim = match.group('synonim')
                     trnslt = match.group('translation')
                     if wrd in dictionary:
                         for dict_word in dictionary[wrd]:
-                            dict_word.translation = trnslt
-                            dict_word.language = lang
-
-                    if synonim in dictionary:
-                        for dict_word in dictionary[synonim]:
                             dict_word.translation = trnslt
                             dict_word.language = lang
                 elif line:
