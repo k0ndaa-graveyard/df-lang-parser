@@ -16,3 +16,15 @@ class Word:
 
     def __str__(self):
         return self.format()
+
+    def valid(self):
+        """
+        Checks if word has all required properties
+        :return: bool
+        """
+        if not self.word: return False
+        if not self.word_form: return False
+        if not self.translation: return False
+        if not self.pof: return False
+        if not self.language: return False
+        return True
