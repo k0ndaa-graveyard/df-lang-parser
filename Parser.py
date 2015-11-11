@@ -26,7 +26,7 @@ class Parser:
                 elif(':' in stripped):
                     word = Parser.createWord(lastWord, stripped)
                     if word:
-                        if word in dictionary:
+                        if word.word in dictionary:
                             dictionary[word.word].append(word)
                         else:
                             dictionary[word.word] = [word,]
